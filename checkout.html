@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Оформление заказа – JoyCity</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="checkout">
+  <header>
+    <div class="logo"><a href="index.html">JoyCity</a></div>
+    <nav>
+      <a href="product-list.html">Каталог</a>
+    </nav>
+    <div class="actions">
+      <a href="cart.html" class="cart-link">🛒<span class="badge cart-badge" style="display:none;">0</span></a>
+      <a href="#">👤</a>
+    </div>
+  </header>
+
+  <div class="checkout-container">
+    <h2>Оформление заказа</h2>
+    <form class="checkout-form">
+      <div>
+        <label for="customer-name">Имя</label>
+        <input type="text" id="customer-name" placeholder="Ваше имя" required />
+      </div>
+      <div>
+        <label for="customer-address">Адрес</label>
+        <input type="text" id="customer-address" placeholder="Улица, дом, квартира" required />
+      </div>
+      <div>
+        <label for="customer-city">Город</label>
+        <input type="text" id="customer-city" placeholder="Город" required />
+      </div>
+      <div>
+        <label for="customer-postal">Почтовый индекс</label>
+        <input type="text" id="customer-postal" placeholder="Почтовый индекс" required />
+      </div>
+    </form>
+    <div class="checkout-summary">
+      <table>
+        <thead>
+          <tr>
+            <th>Товар</th>
+            <th>Кол-во</th>
+            <th>Сумма</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled by script.js -->
+        </tbody>
+        <tfoot>
+          <tr class="total-row">
+            <td colspan="2">Итого</td>
+            <td><span class="total-amount">0.00 €</span></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <button type="submit">Подтвердить заказ</button>
+  </div>
+
+  <footer>
+    © 2025 JoyCity. Все права защищены.
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
