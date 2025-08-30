@@ -14,7 +14,8 @@ const products = [
     name: "Летнее платье",
     category: "Женщинам",
     price: 49.99,
-    imageUrl: "https://via.placeholder.com/300x300.png?text=Платье",
+    // Use a locally hosted photo of a red summer dress generated for JoyCity.
+    imageUrl: "dress1.png",
     description: "Стильное летнее платье для женщин, изготовленное из лёгкой ткани. Подходит для прогулок и отдыха.",
   },
   {
@@ -22,7 +23,8 @@ const products = [
     name: "Кроссовки беговые",
     category: "Обувь",
     price: 69.99,
-    imageUrl: "https://via.placeholder.com/300x300.png?text=Кроссовки",
+    // Use a locally hosted photo of neutral running shoes with no branding.
+    imageUrl: "shoes1.png",
     description: "Удобные беговые кроссовки с амортизацией и дышащим верхом. Идеальны для занятий спортом.",
   },
   {
@@ -46,7 +48,8 @@ const products = [
     name: "Смартфон X200",
     category: "Электроника",
     price: 499.99,
-    imageUrl: "https://via.placeholder.com/300x300.png?text=Смартфон",
+    // Use a locally hosted photo of a generic smartphone with gradient screen.
+    imageUrl: "phone1.png",
     description: "Современный смартфон с большим экраном, мощным процессором и камерой высокого разрешения.",
   },
   {
