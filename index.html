@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JoyCity – Главная</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="home">
+  <header>
+    <div class="logo"><a href="index.html">JoyCity</a></div>
+    <nav>
+      <a href="product-list.html">Каталог</a>
+    </nav>
+    <div class="actions">
+      <a href="cart.html" class="cart-link">🛒<span class="badge cart-badge" style="display:none;">0</span></a>
+      <a href="#">👤</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero" style="background-image: url('images/hero.png');">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>Добро пожаловать в JoyCity</h1>
+      <p>Откройте для себя миллионы товаров от лучших продавцов</p>
+      <a href="product-list.html" class="btn">Начать покупки</a>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section>
+    <h2 style="padding: 0 2rem 1rem; font-size: 1.8rem;">Категории</h2>
+    <div class="categories"></div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section>
+    <h2 style="padding: 0 2rem 1rem; font-size: 1.8rem;">Популярные товары</h2>
+    <div class="products"></div>
+  </section>
+
+  <footer>
+    © 2025 JoyCity. Все права защищены.
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
