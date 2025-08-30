@@ -21,8 +21,12 @@
   <div class="product-list-header">
     <h2>Каталог</h2>
     <div class="filters">
-      <label for="sort-select" style="display:none;">Сортировка</label>
-      <select id="sort-select">
+      <!-- Поисковая строка и фильтры -->
+      <input type="text" id="search-input" placeholder="Поиск по названию" />
+      <input type="number" id="min-price" placeholder="Мин. цена" min="0" />
+      <input type="number" id="max-price" placeholder="Макс. цена" min="0" />
+      <button id="filter-btn">Фильтровать</button>
+      <select id="sort-select" title="Сортировка">
         <option value="">Без сортировки</option>
         <option value="price-asc">Цена: низкая → высокая</option>
         <option value="price-desc">Цена: высокая → низкая</option>
@@ -31,6 +35,9 @@
   </div>
 
   <div class="products"></div>
+
+  <!-- Пагинация -->
+  <div class="pagination"></div>
 
   <footer>
     © 2025 JoyCity. Все права защищены.

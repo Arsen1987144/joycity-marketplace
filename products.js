@@ -1,31 +1,32 @@
 /*
- * Product catalog for the JoyCity marketplace.
+ * Product catalog for the enhanced JoyCity marketplace.
  *
- * This file exports a global variable `products` containing an array of
- * product objects. Each product has an id, name, category, price, imageUrl
- * and description. Feel free to extend or replace this data as you add
- * more items to your marketplace. The placeholder images come from
- * via.placeholder.com and can be swapped out for real product photos later.
+ * Each product has an id, name, category, price, imageUrl, description and stock quantity.
+ * The imageUrl fields for certain products point to locally hosted files (dress1.png,
+ * shoes1.png and phone1.png) generated for this demo. Feel free to replace these
+ * images with your own. Other items still use placeholder images from via.placeholder.com
+ * to illustrate the catalogue. Stock values are arbitrary and can be adjusted.
  */
 
 const products = [
+  // Page 1
   {
     id: 1,
     name: "Летнее платье",
     category: "Женщинам",
     price: 49.99,
-    // Use a locally hosted photo of a red summer dress generated for JoyCity.
     imageUrl: "dress1.png",
     description: "Стильное летнее платье для женщин, изготовленное из лёгкой ткани. Подходит для прогулок и отдыха.",
+    stock: 50,
   },
   {
     id: 2,
     name: "Кроссовки беговые",
     category: "Обувь",
     price: 69.99,
-    // Use a locally hosted photo of neutral running shoes with no branding.
     imageUrl: "shoes1.png",
     description: "Удобные беговые кроссовки с амортизацией и дышащим верхом. Идеальны для занятий спортом.",
+    stock: 40,
   },
   {
     id: 3,
@@ -34,6 +35,7 @@ const products = [
     price: 29.99,
     imageUrl: "https://via.placeholder.com/300x300.png?text=Конструктор",
     description: "Развивающий набор конструктора для детей. Содержит яркие блоки для создания различных моделей.",
+    stock: 100,
   },
   {
     id: 4,
@@ -42,15 +44,16 @@ const products = [
     price: 39.99,
     imageUrl: "https://via.placeholder.com/300x300.png?text=Рубашка",
     description: "Классическая мужская рубашка с длинным рукавом из хлопка. Подходит для офиса и повседневной носки.",
+    stock: 60,
   },
   {
     id: 5,
     name: "Смартфон X200",
     category: "Электроника",
     price: 499.99,
-    // Use a locally hosted photo of a generic smartphone with gradient screen.
     imageUrl: "phone1.png",
     description: "Современный смартфон с большим экраном, мощным процессором и камерой высокого разрешения.",
+    stock: 30,
   },
   {
     id: 6,
@@ -58,7 +61,8 @@ const products = [
     category: "Красота",
     price: 24.99,
     imageUrl: "https://via.placeholder.com/300x300.png?text=Косметика",
-    description: "Набор декоративной косметики, включающий помаду, тушь и тену. Подходит для создания повседневного макияжа.",
+    description: "Набор декоративной косметики, включающий помаду, тушь и тени. Подходит для создания повседневного макияжа.",
+    stock: 80,
   },
   {
     id: 7,
@@ -67,6 +71,7 @@ const products = [
     price: 59.99,
     imageUrl: "https://via.placeholder.com/300x300.png?text=Фитнес+браслет",
     description: "Умный фитнес-браслет для отслеживания физической активности, сна и сердечного ритма.",
+    stock: 70,
   },
   {
     id: 8,
@@ -75,6 +80,7 @@ const products = [
     price: 79.99,
     imageUrl: "https://via.placeholder.com/300x300.png?text=Кофеварка",
     description: "Компактная кофеварка для приготовления ароматного эспрессо дома. Лёгкая в управлении.",
+    stock: 45,
   },
   {
     id: 9,
@@ -83,6 +89,7 @@ const products = [
     price: 34.99,
     imageUrl: "https://via.placeholder.com/300x300.png?text=Робот",
     description: "Интерактивная игрушка-робот для детей с функциями танцев и звуковых эффектов.",
+    stock: 90,
   },
   {
     id: 10,
@@ -91,6 +98,7 @@ const products = [
     price: 89.99,
     imageUrl: "https://via.placeholder.com/300x300.png?text=Блендер",
     description: "Многофункциональный блендер для приготовления коктейлей, супов-пюре и смузи. Имеет несколько режимов.",
+    stock: 55,
   },
   {
     id: 11,
@@ -99,6 +107,7 @@ const products = [
     price: 14.99,
     imageUrl: "https://via.placeholder.com/300x300.png?text=Книга",
     description: "Захватывающий фантастический роман о путешествиях во времени и загадках прошлого.",
+    stock: 120,
   },
   {
     id: 12,
@@ -107,8 +116,118 @@ const products = [
     price: 54.99,
     imageUrl: "https://via.placeholder.com/300x300.png?text=Инструменты",
     description: "Профессиональный набор инструментов в кейсе: отвертки, ключи, плоскогубцы и многое другое.",
+    stock: 65,
+  },
+  // Page 2 additional items
+  {
+    id: 13,
+    name: "Вечернее платье",
+    category: "Женщинам",
+    price: 59.99,
+    imageUrl: "dress1.png",
+    description: "Элегантное вечернее платье для особых случаев. Плотная ткань и изысканный крой подчёркивают фигуру.",
+    stock: 35,
+  },
+  {
+    id: 14,
+    name: "Туристические ботинки",
+    category: "Обувь",
+    price: 79.99,
+    imageUrl: "shoes1.png",
+    description: "Прочные туристические ботинки для пеших походов. Небрендированная модель в универсальном стиле.",
+    stock: 35,
+  },
+  {
+    id: 15,
+    name: "Пазл 500 деталей",
+    category: "Детям",
+    price: 19.99,
+    imageUrl: "https://via.placeholder.com/300x300.png?text=Пазл",
+    description: "Красочный пазл на 500 деталей с изображением природы. Развивает усидчивость и внимание к деталям.",
+    stock: 100,
+  },
+  {
+    id: 16,
+    name: "Мужская куртка",
+    category: "Мужчинам",
+    price: 69.99,
+    imageUrl: "https://via.placeholder.com/300x300.png?text=Куртка",
+    description: "Тёплая мужская куртка с водоотталкивающей тканью. Подходит для прохладной погоды.",
+    stock: 40,
+  },
+  {
+    id: 17,
+    name: "Планшет T10",
+    category: "Электроника",
+    price: 299.99,
+    imageUrl: "https://via.placeholder.com/300x300.png?text=Планшет",
+    description: "Универсальный планшет с 10-дюймовым дисплеем и поддержкой Wi-Fi. Отличное решение для работы и развлечений.",
+    stock: 25,
+  },
+  {
+    id: 18,
+    name: "Набор парфюмов",
+    category: "Красота",
+    price: 49.99,
+    imageUrl: "https://via.placeholder.com/300x300.png?text=Парфюм",
+    description: "Набор ароматных парфюмов в миниатюрных флаконах. Подходит для подарка или путешествий.",
+    stock: 55,
+  },
+  {
+    id: 19,
+    name: "Коврик для йоги",
+    category: "Спорт",
+    price: 19.99,
+    imageUrl: "https://via.placeholder.com/300x300.png?text=Коврик",
+    description: "Мягкий и нескользящий коврик для занятий йогой и фитнесом. Легко сворачивается и переносится.",
+    stock: 90,
+  },
+  {
+    id: 20,
+    name: "Пылесос",
+    category: "Дом",
+    price: 129.99,
+    imageUrl: "https://via.placeholder.com/300x300.png?text=Пылесос",
+    description: "Мощный пылесос для уборки дома с несколькими насадками. Эффективно удаляет пыль и грязь.",
+    stock: 30,
+  },
+  {
+    id: 21,
+    name: "Плюшевый медведь",
+    category: "Игрушки",
+    price: 24.99,
+    imageUrl: "https://via.placeholder.com/300x300.png?text=Медведь",
+    description: "Мягкий плюшевый медведь высотой 50 см. Идеальный друг для объятий и игр.",
+    stock: 85,
+  },
+  {
+    id: 22,
+    name: "Микроволновая печь",
+    category: "Бытовая техника",
+    price: 109.99,
+    imageUrl: "https://via.placeholder.com/300x300.png?text=Микроволновка",
+    description: "Компактная микроволновая печь с несколькими режимами разогрева и размораживания.",
+    stock: 30,
+  },
+  {
+    id: 23,
+    name: "Книга 'Кулинарные рецепты'",
+    category: "Книги",
+    price: 19.99,
+    imageUrl: "https://via.placeholder.com/300x300.png?text=Книга",
+    description: "Книга с лучшими рецептами мировой кухни. Пошаговые инструкции и красочные фотографии.",
+    stock: 70,
+  },
+  {
+    id: 24,
+    name: "Набор отвёрток",
+    category: "Для ремонта",
+    price: 34.99,
+    imageUrl: "https://via.placeholder.com/300x300.png?text=Отвертки",
+    description: "Комплект из 10 отвёрток разных размеров и типов для мелкого ремонта дома.",
+    stock: 50,
   },
 ];
 
-// Expose the products to the global scope so that other scripts can access them.
+// Экспортируем каталог товаров в глобальную область для доступа из других скриптов.
 window.products = products;

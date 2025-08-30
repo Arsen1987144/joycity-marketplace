@@ -7,9 +7,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 :root {
-  --primary-color: #0f62fe; /* JoyCity blue */
-  --secondary-color: #f1f1f1;
-  --accent-color: #ff7f50; /* Coral accent for buttons */
+  /* Updated color scheme reminiscent of popular marketplaces while remaining unique */
+  --primary-color: #8B32E3; /* deep purple primary color */
+  --secondary-color: #f5f3fa; /* light lavender background for cards */
+  --accent-color: #FF4FA2; /* vivid pink accent for buttons */
   --text-color: #333;
   --bg-color: #ffffff;
   --header-height: 70px;
@@ -267,6 +268,13 @@ header .actions a span.badge {
   margin-bottom: 0.8rem;
 }
 
+/* Stock indicator in product cards */
+.product-card .info .stock {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
 .product-card .info button {
   background-color: var(--primary-color);
   color: #fff;
@@ -304,6 +312,58 @@ header .actions a span.badge {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+/* Additional filter controls for search and price inputs on product list page */
+.product-list-header .filters input[type="text"],
+.product-list-header .filters input[type="number"] {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  max-width: 140px;
+}
+
+.product-list-header .filters button {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 0.45rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.product-list-header .filters button:hover {
+  background-color: #054ada;
+}
+
+/* Pagination styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.pagination button {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.pagination button.active {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+.pagination button:hover {
+  background-color: var(--secondary-color);
 }
 
 /* Product detail page */

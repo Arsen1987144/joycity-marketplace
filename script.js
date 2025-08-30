@@ -120,6 +120,12 @@ function createProductCard(product) {
   const price = document.createElement('div');
   price.className = 'price';
   price.textContent = `${product.price.toFixed(2)} €`;
+  // Display stock information if available
+  const stockEl = document.createElement('div');
+  stockEl.className = 'stock';
+  if (typeof product.stock === 'number') {
+    stockEl.textContent = `В наличии: ${product.stock}`;
+  }
   const button = document.createElement('button');
   button.textContent = 'В корзину';
   button.addEventListener('click', (e) => {
@@ -128,6 +134,7 @@ function createProductCard(product) {
   });
   info.appendChild(title);
   info.appendChild(price);
+  info.appendChild(stockEl);
   info.appendChild(button);
   card.appendChild(img);
   card.appendChild(info);
@@ -146,28 +153,89 @@ function initProductListPage() {
     heading.textContent = category ? `Категория: ${category}` : 'Все товары';
   }
   const listContainer = document.querySelector('.products');
-  if (!listContainer) return;
-  // Sorting select
+  const paginationContainer = document.querySelector('.pagination');
+  if (!listContainer || !paginationContainer) return;
+  // UI elements
   const sortSelect = document.querySelector('#sort-select');
-  // Filter products by category
-  let filtered = category ? products.filter(p => p.category === category) : products.slice();
-  function renderList(arr) {
+  const searchInput = document.querySelector('#search-input');
+  const minPriceInput = document.querySelector('#min-price');
+  const maxPriceInput = document.querySelector('#max-price');
+  const filterBtn = document.querySelector('#filter-btn');
+  // Base list filtered by category
+  const baseList = category ? products.filter(p => p.category === category) : products.slice();
+  let filtered = baseList.slice();
+  let currentPage = parseInt(params.page || '1', 10);
+  if (isNaN(currentPage) || currentPage < 1) currentPage = 1;
+  const itemsPerPage = 12;
+  function applySorting() {
+    const value = sortSelect ? sortSelect.value : '';
+    if (value === 'price-asc') {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (value === 'price-desc') {
+      filtered.sort((a, b) => b.price - a.price);
+    }
+  }
+  function renderPage(page) {
+    currentPage = page;
     listContainer.innerHTML = '';
-    arr.forEach(prod => {
+    const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const items = filtered.slice(start, end);
+    items.forEach(prod => {
       const card = createProductCard(prod);
       listContainer.appendChild(card);
     });
+    // Render pagination controls
+    paginationContainer.innerHTML = '';
+    if (totalPages > 1) {
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = i;
+        btn.className = i === currentPage ? 'active' : '';
+        btn.addEventListener('click', () => {
+          // Update URL parameters for page but preserve category and filters
+          const url = new URL(window.location.href);
+          url.searchParams.set('page', i);
+          if (category) url.searchParams.set('category', category);
+          history.pushState({}, '', url);
+          renderPage(i);
+        });
+        paginationContainer.appendChild(btn);
+      }
+    }
   }
-  renderList(filtered);
+  function applyFilters() {
+    const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+    const minPriceVal = minPriceInput ? parseFloat(minPriceInput.value) : NaN;
+    const maxPriceVal = maxPriceInput ? parseFloat(maxPriceInput.value) : NaN;
+    filtered = baseList.filter(p => {
+      if (query && !p.name.toLowerCase().includes(query)) return false;
+      if (!isNaN(minPriceVal) && p.price < minPriceVal) return false;
+      if (!isNaN(maxPriceVal) && p.price > maxPriceVal) return false;
+      return true;
+    });
+    applySorting();
+    renderPage(1);
+  }
+  // Initial apply filters and sort
+  applySorting();
+  renderPage(currentPage);
   if (sortSelect) {
     sortSelect.addEventListener('change', () => {
-      const value = sortSelect.value;
-      if (value === 'price-asc') {
-        filtered.sort((a, b) => a.price - b.price);
-      } else if (value === 'price-desc') {
-        filtered.sort((a, b) => b.price - a.price);
-      }
-      renderList(filtered);
+      applySorting();
+      renderPage(1);
+    });
+  }
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      applyFilters();
+    });
+  }
+  if (filterBtn) {
+    filterBtn.addEventListener('click', () => {
+      applyFilters();
     });
   }
 }
@@ -182,6 +250,7 @@ function initProductDetailPage() {
   const imgEl = document.querySelector('.product-detail .image-gallery img');
   const titleEl = document.querySelector('.product-detail .details h2');
   const priceEl = document.querySelector('.product-detail .details .price');
+  const stockEl = document.querySelector('.product-detail .details .stock');
   const descEl = document.querySelector('.product-detail .details .description');
   const addBtn = document.querySelector('.product-detail .details button');
   if (imgEl) {
@@ -190,6 +259,7 @@ function initProductDetailPage() {
   }
   if (titleEl) titleEl.textContent = product.name;
   if (priceEl) priceEl.textContent = `${product.price.toFixed(2)} €`;
+  if (stockEl && typeof product.stock === 'number') stockEl.textContent = `В наличии: ${product.stock}`;
   if (descEl) descEl.textContent = product.description;
   if (addBtn) {
     addBtn.addEventListener('click', () => {
