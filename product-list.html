@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Каталог – JoyCity</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="product-list">
+  <header>
+    <div class="logo"><a href="index.html">JoyCity</a></div>
+    <nav>
+      <a href="product-list.html">Каталог</a>
+    </nav>
+    <div class="actions">
+      <a href="cart.html" class="cart-link">🛒<span class="badge cart-badge" style="display:none;">0</span></a>
+      <a href="#">👤</a>
+    </div>
+  </header>
+
+  <div class="product-list-header">
+    <h2>Каталог</h2>
+    <div class="filters">
+      <label for="sort-select" style="display:none;">Сортировка</label>
+      <select id="sort-select">
+        <option value="">Без сортировки</option>
+        <option value="price-asc">Цена: низкая → высокая</option>
+        <option value="price-desc">Цена: высокая → низкая</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="products"></div>
+
+  <footer>
+    © 2025 JoyCity. Все права защищены.
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
